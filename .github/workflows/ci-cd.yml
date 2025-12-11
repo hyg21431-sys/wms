@@ -61,7 +61,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           source: "deploy-artifacts/${{ env.JAR_FILE }}"
-          target: "~/wms-docker/build/libs/"
+          target: "~/wms-docker/"
           overwrite: true
 
       - name: Deploy on EC2
@@ -75,8 +75,8 @@ jobs:
           script: |
             set -e
             cd ~/wms-docker
-            git pull origin main
-            cp build/libs/ProjectWMS-0.0.1-SNAPSHOT.jar ./ProjectWMS-0.0.1-SNAPSHOT.jar
+            git fetch origin
+            git reset --hard origin/main
             docker compose down
-            docker compose up -d --build
+            docker compose up -d
             docker ps
