@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>물류 창고 입출고 프로그램</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>물류 창고 입출고 프로그램</h1>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="/product">제품조회</a></li>
+                    <li><a href="/inoutRegister">입출고등록</a></li>
+                    <li><a href="/viewInoutRegister">입출고내역조회</a></li>
+                    <li><a href="/grossProfit">출고매출이익</a></li>
+                    <li><a href="/">홈으로</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+	    <section>
+	        <h2 class="table-title">제품 조회</h2>
+	        <div class="table-container">
+	            <table class="data-table">
+	                <tr>
+	                    <th>제품코드</th>
+	                    <th>제품명</th>
+	                    <th>사이즈</th>
+	                    <th>매입단가</th>
+	                    <th>출고단가</th>
+	                </tr>
+	                <tr th:each="product : ${product}">
+	                    <td th:text="${product.product_code}"></td>
+	                    <td th:text="${product.product_name}"></td>
+	                    <td th:text="${product.product_size} + ' mm'"></td>
+	                    <td th:text="'\\ ' + ${#numbers.formatInteger(product.product_incost,1,'COMMA')}"></td>
+	                    <td th:text="'\\ ' + ${#numbers.formatInteger(product.product_outcost,1,'COMMA')}"></td>
+	                </tr>
+	                <tr class="sum-row">
+	                    <td colspan="3">합계</td>
+	                    <td class="highlight" th:text="'\\ ' + ${totalIncost}"></td>
+	                    <td class="highlight" th:text="'\\ ' + ${totalOutcost}"></td>
+	                </tr>
+	            </table>
+	        </div>
+	    </section>
+	</main>
+    <footer>
+        <p>copyright ⓒ 2024 KOREA INFORMATION TECHNOLOGY ACADEMY. ALL RIGHTS RESERVED</p>
+    </footer>
+</body>
+</html>

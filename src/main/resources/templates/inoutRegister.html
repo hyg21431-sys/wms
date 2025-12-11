@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>물류 창고 입출고 프로그램</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>물류 창고 입출고 프로그램</h1>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="/product">제품조회</a></li>
+                    <li><a href="/inoutRegister">입출고등록</a></li>
+                    <li><a href="/viewInoutRegister">입출고내역조회</a></li>
+                    <li><a href="/grossProfit">출고매출이익</a></li>
+                    <li><a href="/">홈으로</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div>
+                <h2>입출고 등록</h2>
+                <form id="inoutForm" action="/inoutRegister" method="post">
+                	<div class="viewInout">
+		                <table>
+		                	<tr>
+		                		<td>입출고번호</td>
+		                		<td><input type="text" name="t_no" id="t_no" th:value="${nextTno}" readonly/></td>
+		                		<td> 예) 20240006</td>
+		                	</tr>
+		                	<tr>
+		                		<td>제품코드</td>
+		                		<td><input type="text" name="product_code" id="product_code" placeholder="예시) B01"/></td>
+		                	</tr>
+							<tr>
+							    <td colspan="2">
+									<label class="margin-right">입출고 구분</label>
+									<input type="radio" name="t_type" value="I"> 입고
+									<input type="radio" name="t_type" value="O"> 출고
+							    </td>
+							</tr>
+		                	<tr>
+		                		<td>수량</td>
+		                		<td><input type="number" name="t_count" id="t_count"/></td>
+		                	</tr>
+		                	<tr>
+		                		<td>거래일자</td>
+		                		<td><input type="text" name="tDate" id="t_date" th:value="${today}" readonly/></td>
+		                	</tr>
+							<tr>
+								<td><label for="partner">거래처</label></td>
+								<td>
+									<select name="company_code" id="company_code">
+									    <option value="">거래처명</option>
+									    <option value="10">서울공장</option>
+									    <option value="20">울산공장</option>
+									    <option value="30">부산상사</option>
+									    <option value="40">광주상사</option>
+									    <option value="50">대전상사</option>
+									</select>
+								</td>
+							</tr>
+		                	<tr>
+		                		<td><input type="submit" value="입출고등록" onclick="inoutForm(event)"/></td>
+		                		<td><input type="button" value="다시쓰기"/></td>
+		                	</tr>
+		                </table>
+	                </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>copyright ⓒ 2024 KOREA INFORMATION TECHNOLOGY ACADEMY. ALL RIGHTS RESERVED</p>
+    </footer>
+</body>
+</html>
