@@ -63,7 +63,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           source: "deploy-artifacts/${{ env.JAR_FILE }}"
-          target: "~/wms-docker/build/libs/"
+          target: "~/wms-docker/"
           overwrite: true
   
       - name: Deploy on EC2
