@@ -75,8 +75,10 @@ jobs:
           script: |
             set -e
             cd ~/wms-docker
+            mv ${{ env.JAR_FILE }} temp_${{ env.JAR_FILE }}
             git fetch origin
             git reset --hard origin/main
+            mv temp_${{ env.JAR_FILE }} ${{ env.JAR_FILE }}
             docker compose down
-            docker compose up -d
+            docker compose up -d --build
             docker ps
