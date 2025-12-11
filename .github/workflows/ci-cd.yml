@@ -37,7 +37,7 @@ jobs:
         with:
           name: app-jar
           path: build/libs/${{ env.JAR_FILE }}
-
+          
   deploy:
     needs: build-test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
