@@ -63,7 +63,7 @@ jobs:
           port: 22
           source: "deploy-artifacts/${{ env.JAR_FILE }}"
           target: "~/wms-docker/build/libs/"
-          overwirte: true
+          overwrite: true
   
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v1.0.3
