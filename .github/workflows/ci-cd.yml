@@ -76,7 +76,7 @@ jobs:
             set -e
             cd ~/wms-docker
             git pull origin main
-            cp build/libs/ProjectWMS-0.0.1-SNAPSHOT.jar ./ProjectWMS-0.0.1-SNAPSHOT.jar
+            cp build/libs/ProjectWMS-0.0.1-SNAPSHOT-plain.jar ./ProjectWMS-0.0.1-SNAPSHOT.jar
             docker compose down
             docker compose up -d --build
             docker ps
